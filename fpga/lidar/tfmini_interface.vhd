@@ -6,7 +6,7 @@
 --              suma y entrega la distancia en centímetros.
 --
 --              Reconstruido después de la residencia: el archivo original quedó
---              solo con la plantilla. Está simulado, no probado en la placa.
+--              solo con la plantilla. Comprobado en simulación.
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;

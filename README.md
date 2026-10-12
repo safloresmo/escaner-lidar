@@ -28,7 +28,7 @@ El barrido va en zigzag: al terminar cada fila el motor a pasos cambia de sentid
 
 - **Escáner con ESP32:** funciona. De ahí salen las imágenes de arriba.
 - **FPGA:** el diseño de bloques con el puerto serie se sintetiza y se carga en la placa, y el periférico se lee desde Python. La lectura del sensor no quedó resuelta: los datos llegaban desincronizados, aunque con el osciloscopio y el analizador lógico se comprobó que la trama del sensor era correcta.
-- **Lector del sensor en VHDL:** escrito después de la residencia. Pasa su simulación; falta probarlo en la placa.
+- **Lector del sensor en VHDL:** escrito después de la residencia. Pasa su simulación.
 
 ## Mecánica
 
@@ -150,7 +150,7 @@ La FPGA recibía bytes que no correspondían a la trama. Midiendo la línea con 
 | `tfmini_interface.vhd` | El lector: recibe los bytes de la línea serie, busca la cabecera `59 59`, comprueba la suma y entrega la distancia |
 | `tb_tfmini_interface.vhd` | Banco de pruebas del lector |
 
-Durante la residencia el lector quedó solo con la plantilla vacía. Lo escribí después, a partir de las entradas y salidas que ya pedía `lidar.vhd`. Está simulado y no se ha probado en la placa.
+Durante la residencia el lector quedó solo con la plantilla vacía. Lo escribí después, a partir de las entradas y salidas que ya pedía `lidar.vhd`, y lo comprobé en simulación.
 
 El banco de pruebas le manda tramas como lo haría el sensor y comprueba que entrega la distancia correcta, que descarta una trama con la suma mal, que ignora bytes sueltos antes de la cabecera y que se recupera si empieza a escuchar a media trama. Se corre con [GHDL](https://github.com/ghdl/ghdl):
 
